@@ -34,7 +34,8 @@ while cam.isOpened:
         if key == 32:
             # cv2.imwrite("%s/%s.png" % (path, ctr), hand)
             # ctr = str(int(ctr)+1)
-            testCNN.test_im(frame)
+            cv2.imwrite("20.png",frame[y:y+300,x:x+300])
+            testCNN.test_im(frame[y:y+300,x:x+300])
 
     elif fists:
         fist_i = fists[0]
@@ -45,7 +46,8 @@ while cam.isOpened:
         if key == 32:
             # cv2.imwrite("%s/%s.png" % (path, ctr), fist)
             # ctr = str(int(ctr) + 1)
-            testCNN.test_im(frame)
+            cv2.imwrite("tested.png",frame[y:y+300,x:x+300])
+            testCNN.test_im(frame[y:y+300,x:x+300])
 
     cv2.imshow("webcam",frame)
 
