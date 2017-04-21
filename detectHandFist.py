@@ -13,6 +13,8 @@ classifier = cv2.CascadeClassifier("hand2.xml")
 classifier2 = cv2.CascadeClassifier("hand.xml")
 cam = cv2.VideoCapture(0)
 
+t= testCNN.testing()
+
 while cam.isOpened:
     key = cv2.waitKey(10)
     if key == 27:
@@ -35,7 +37,7 @@ while cam.isOpened:
             # cv2.imwrite("%s/%s.png" % (path, ctr), hand)
             # ctr = str(int(ctr)+1)
             cv2.imwrite("20.png",frame[y:y+300,x:x+300])
-            testCNN.test_im(frame[y:y+300,x:x+300])
+            t.test_im(frame[y:y+300,x:x+300])
 
     elif fists:
         fist_i = fists[0]
@@ -47,7 +49,7 @@ while cam.isOpened:
             # cv2.imwrite("%s/%s.png" % (path, ctr), fist)
             # ctr = str(int(ctr) + 1)
             cv2.imwrite("tested.png",frame[y:y+300,x:x+300])
-            testCNN.test_im(frame[y:y+300,x:x+300])
+            t.test_im(frame[y:y+300,x:x+300])
 
     cv2.imshow("webcam",frame)
 
