@@ -1,12 +1,13 @@
 import cv2
 import os
 from PIL import Image
+import testCNN
 
-alphabet = 'A'
-ctr = '0'
-path = os.path.join("TrainingImages",alphabet)
-if not os.path.isdir(path):
-    os.mkdir(path)
+# alphabet = 'A'
+# ctr = '0'
+# path = os.path.join("TrainingImages",alphabet)
+# if not os.path.isdir(path):
+#     os.mkdir(path)
 
 classifier = cv2.CascadeClassifier("hand2.xml")
 classifier2 = cv2.CascadeClassifier("hand.xml")
@@ -27,23 +28,24 @@ while cam.isOpened:
     if hands:
         hand_i = hands[0]
         (x,y,w,h) = [v*4 for v in hand_i]
-        hand = frame[y:y+400,x:x+400]
+        hand = frame[y:y+300,x:x+300]
         # resizedFrame = cv2.resize(hand,(112,92))
-        cv2.rectangle(frame, (x, y), (x + 400, y + 400), (204, 153, 255), 2)
+        cv2.rectangle(frame, (x, y), (x + 300, y + 300), (204, 153, 255), 2)
         if key == 32:
-            cv2.imwrite("%s/%s.png" % (path, ctr), hand)
-            ctr = str(int(ctr)+1)
-
+            # cv2.imwrite("%s/%s.png" % (path, ctr), hand)
+            # ctr = str(int(ctr)+1)
+            testCNN.test_im(frame)
 
     elif fists:
         fist_i = fists[0]
         (x,y,w,h) = [v*4 for v in fist_i]
-        fist = frame[y:y+400,x:x+400]
+        fist = frame[y:y+300,x:x+300]
         # resizedFrame = cv2.resize(fist, (112, 92))
-        cv2.rectangle(frame, (x, y), (x + 400, y + 400), (204, 153, 255), 2)
+        cv2.rectangle(frame, (x, y), (x + 300, y + 300), (204, 153, 255), 2)
         if key == 32:
-            cv2.imwrite("%s/%s.png" % (path, ctr), fist)
-            ctr = str(int(ctr) + 1)
+            # cv2.imwrite("%s/%s.png" % (path, ctr), fist)
+            # ctr = str(int(ctr) + 1)
+            testCNN.test_im(frame)
 
     cv2.imshow("webcam",frame)
 

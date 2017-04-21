@@ -2,7 +2,7 @@ import cv2
 
 cam = cv2.VideoCapture(0)
 i=0
-num = 1
+num = 19
 
 while cam.isOpened:
     key = cv2.waitKey(10)
@@ -18,6 +18,7 @@ while cam.isOpened:
     cv2.rectangle(frame,(x-150,y-150),(x+150,y+150),2)
     cv2.imshow("store pic",frame)
     if key == 32:
-        cv2.imwrite("./TrainingImages/B/%s.png"%num,frame[y-150:y+150,x-150:x+150])
+        # cv2.imwrite("./TrainingImages/A/%s.png"%num,frame[y-150:y+150,x-150:x+150])
+        cv2.imwrite("%s.png"%num,frame[y-150:y+150,x-150:x+150])
         num+=1
     i+=1

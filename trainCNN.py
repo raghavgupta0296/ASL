@@ -90,10 +90,10 @@ best_acc = 0
 
 with tf.Session() as sess:
     sess.run(tf.global_variables_initializer())
-    for i in range(20000):
-        print("Epoch : %d / 20000 "%i)
+    for i in range(100):
+        print("Epoch : %d / 100 "%i)
         optimizer.run(feed_dict={X:x,Y:y,dropout_keepProb:0.5})
-        if i%100==0:
+        if i%20==0:
             print ("\n Training Acc : ")
             acc = sess.run(accuracy,feed_dict={X:x,Y:y,dropout_keepProb:1})
             print (acc*100,"%")
